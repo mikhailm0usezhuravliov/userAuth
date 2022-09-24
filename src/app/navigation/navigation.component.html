@@ -1,0 +1,13 @@
+<nav class="navigation">
+  <h1>{{User.login}}</h1>
+  <ul>
+    <li class="navigation__item" *ngFor="let menu of menuItems">
+     <a routerLink="{{menu.href}}"><mat-icon >{{menu.icon}}</mat-icon>{{menu.title}}</a>
+    </li>
+    <li class="navigation__item" *ngIf="isAuth$ | async">
+      <button mat-icon-button color="" (click)="logOut()">
+        <mat-icon >logout</mat-icon>
+      </button>
+    </li>
+  </ul>
+</nav>

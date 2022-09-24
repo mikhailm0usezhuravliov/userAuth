@@ -1,0 +1,12 @@
+.form-wrapper {
+  background-color: black;
+  max-width: 350px;
+  margin: auto;
+  margin-top: 20px;
+
+  .profile-form {
+    mat-form-field {
+      display: block;
+    }
+  }
+}

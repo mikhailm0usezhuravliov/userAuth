@@ -1,0 +1,77 @@
+<div class="form-wrapper">
+  <form class="profile-form" [formGroup]="form" (ngSubmit)="saveProfile(form)">
+
+    <mat-form-field appearance="standard">
+      <mat-label>First name</mat-label>
+      <input matInput maxlength="30" inputmode="tel" placeholder="Type name" formControlName="firstName">
+      <mat-error *ngIf="form.controls['firstName'].errors?.['required']">Required</mat-error>
+      <mat-error *ngIf="form.controls['firstName'].errors?.['minlength']">
+        Please enter more than 2 character
+      </mat-error>
+      <mat-error *ngIf="form.controls['firstName'].errors?.['maxlength']">
+        Please enter less than 30 character
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Second name</mat-label>
+      <input matInput maxlength="30" inputmode="tel" placeholder="Type name" formControlName="secondName">
+      <mat-error *ngIf="form.controls['secondName'].errors?.['required']">Required</mat-error>
+      <mat-error *ngIf="form.controls['secondName'].errors?.['minlength']">
+        Please enter more than 2 character
+      </mat-error>
+      <mat-error *ngIf="form.controls['secondName'].errors?.['maxlength']">
+        Please enter less than 30 character
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Email Address:</mat-label>
+      <input matInput type="email" formControlName="email" placeholder="Your email">
+      <mat-icon matSuffix>mail_outline</mat-icon>
+      <mat-hint>Input the fully qualified email address</mat-hint>
+      <mat-error *ngIf="form.controls['email'].errors?.['required']">Email is required</mat-error>
+      <mat-error *ngIf="form.controls['email'].errors?.['pattern']">Please enter valid email</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Birthday</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="birthDay">
+      <mat-datepicker-toggle matSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Address:</mat-label>
+      <textarea matInput placeholder="address" formControlName="address"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" hintLabel="Country name required">
+      <mat-label>Country</mat-label>
+      <mat-select matNativeControl name="country" formControlName="country">
+        <mat-option value="india">India</mat-option>
+        <mat-option value="france">France</mat-option>
+        <mat-option value="germany">Germany</mat-option>
+        <mat-option value="japan">Japan</mat-option>
+        <mat-option value="Ukraine">Ukraine</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div style="margin-top:10px;">
+      <div style="margin-right:3%; color:#6b6b6b;">
+        <mat-label>Gender</mat-label>
+      </div>
+      <mat-radio-group formControlName="gender">
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+        <mat-radio-button value="other">other</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div mat-dialog-actions align="end">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </div>
+  </form>
+</div>
